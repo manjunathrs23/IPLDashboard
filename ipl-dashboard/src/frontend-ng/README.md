@@ -1,8 +1,8 @@
 # FrontendNg
 
 ## After cloning the project follow below steps to run project
-# npm instal 
-# ng serve
+npm install
+ng serve
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
 
