@@ -1,0 +1,40 @@
+<div class="modal-header">
+  <h4 class="modal-title">Match Details</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div class="card-body">
+    <h5 class="card-title">{{matchDetails.team1}} vs {{matchDetails.team2}}</h5>
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <td style="width: 20%">Date </td>
+          <td>{{matchDetails.date}}</td>
+        </tr>
+        <tr>
+          <td style="width: 20%">Venue</td>
+          <td>{{matchDetails.venue}}</td>
+        </tr>
+        <tr>
+          <td style="width: 20%">Toss</td>
+          <td>{{matchDetails.tossWinner}} had won the toss and elected to {{matchDetails.tossDecision}} first</td>
+        </tr>
+        <tr>
+          <td style="width: 20%">Result</td>
+          <td>{{matchDetails.matchWinner}} won the match by {{matchDetails.resultMargin}} {{matchDetails.result}}</td>
+        </tr>
+        <tr>
+          <td style="width: 20%">Umpire</td>
+          <td>{{matchDetails.umpire1}}, {{matchDetails.umpire2}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+  </div>
+</div>

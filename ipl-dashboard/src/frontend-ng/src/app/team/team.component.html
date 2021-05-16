@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="card col-md-3">
+        <div class="card-header bg-info text-white" *ngIf="teamNames?.length">
+            <h6>Team Names</h6>
+        </div>
+        <div class="card-body">
+            <div class="list-group">
+                <button class="list-group-item list-group-item-action rounded-0" *ngFor="let teamName of teamNames"
+                    (click)="teamSelected(teamName)">{{ teamName }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="card col-md-9" *ngIf="iplResponse">
+        <div class="card-header bg-info text-white">
+            {{iplResponse.teamName}} Details
+        </div>
+        <div class="card-body">
+            <div class="container list-group-item ">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="card-title">Total Matches : {{iplResponse.totalMatches}}</div>
+                        <div class="card-title">Total Wins : {{iplResponse.totalWins}}</div>
+                        <br/>
+                        <button class="btn btn-outline-primary" (click)="toggleDetails()"> {{toggleMessage}} Recent
+                            Matches details</button>
+                    </div>
+                    <div class="col-sm">
+                        <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
+                            [labels]="chartOptions.labels" [responsive]="chartOptions.responsive"></apx-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body" *ngIf=showDetails() >
+            <div class="list-group" *ngIf="iplResponse.matches?.length">
+                <div class="list-group-item list-group-item-action rounded-10"
+                    *ngFor="let match of iplResponse.matches">
+                    <h5><span>vs </span></h5>
+                    <h5><span><a href="javascript:void(0)" (click)="teamSelected(oppoTeam)">
+                                {{teamName(iplResponse, match)}}</a>
+                        </span></h5>
+                    <h6> {{match.date}} </h6>
+                    <p>{{match.matchWinner}} won by {{match.result}} {{match.resultMargin}}</p>
+                    <match-details-component [matchDetails]='lastMatch'></match-details-component>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
